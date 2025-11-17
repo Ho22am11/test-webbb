@@ -474,12 +474,15 @@
 
         /* Candles Styles */
         .candles-container {
+            position: absolute;
+            top: -70px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 2rem;
-            margin: 2rem 0;
-            padding: 1rem;
+            gap: 3rem;
+            z-index: 10;
         }
 
         .candle-wrapper {
@@ -491,19 +494,19 @@
         }
 
         .candle-wrapper:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .flame-container {
             position: relative;
-            height: 40px;
-            margin-bottom: -10px;
+            height: 25px;
+            margin-bottom: -8px;
             transition: all 0.5s ease;
         }
 
         .flame {
-            font-size: 2.5rem;
-            filter: drop-shadow(0 0 15px rgba(255, 200, 0, 0.8));
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 200, 0, 0.8));
             animation: flicker 1.5s ease-in-out infinite;
             transition: all 0.5s ease;
         }
@@ -518,17 +521,17 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 2rem;
+            font-size: 1.2rem;
             opacity: 0;
             animation: smokeRise 2s ease-out forwards;
         }
 
         .candle-body {
-            width: 50px;
-            height: 120px;
+            width: 30px;
+            height: 70px;
             background: linear-gradient(to bottom, #ffeb3b, #ffc107, #ff9800);
-            border-radius: 10px 10px 5px 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px 8px 4px 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             position: relative;
             transition: all 0.5s ease;
         }
@@ -536,11 +539,11 @@
         .candle-body::before {
             content: '';
             position: absolute;
-            top: -3px;
+            top: -2px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 15px;
+            width: 3px;
+            height: 10px;
             background: #333;
             border-radius: 2px;
         }
@@ -551,21 +554,21 @@
 
         .wax-drip {
             position: absolute;
-            width: 6px;
-            height: 20px;
+            width: 4px;
+            height: 12px;
             background: rgba(255, 235, 59, 0.6);
-            border-radius: 0 0 3px 3px;
+            border-radius: 0 0 2px 2px;
             filter: blur(1px);
         }
 
         .wax-drip:nth-child(1) {
-            top: 20px;
-            left: 10px;
+            top: 15px;
+            left: 8px;
         }
 
         .wax-drip:nth-child(2) {
-            top: 35px;
-            right: 12px;
+            top: 25px;
+            right: 9px;
         }
 
         @keyframes flicker {
@@ -607,16 +610,21 @@
 
         @media (max-width: 768px) {
             .candles-container {
-                gap: 1rem;
+                gap: 2rem;
+                top: -60px;
             }
 
             .candle-body {
-                width: 40px;
-                height: 100px;
+                width: 25px;
+                height: 60px;
             }
 
             .flame {
-                font-size: 2rem;
+                font-size: 1.3rem;
+            }
+            
+            .flame-container {
+                height: 20px;
             }
         }
 
@@ -634,6 +642,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 80px;
         }
 
         .cake {
@@ -910,7 +919,8 @@
       
       <div class="cake-container">
        <div class="cake-with-candles">
-        <!-- Candles above cake -->
+        
+        <!-- Candles on top of cake -->
         <div class="candles-container" id="candlesContainer">
          <div class="candle-wrapper" onclick="blowCandle(0)">
           <div class="flame-container" id="flame-0">
@@ -935,24 +945,6 @@
            <div class="flame">🔥</div>
           </div>
           <div class="candle-body" id="candle-2">
-           <div class="wax-drip"></div>
-           <div class="wax-drip"></div>
-          </div>
-         </div>
-         <div class="candle-wrapper" onclick="blowCandle(3)">
-          <div class="flame-container" id="flame-3">
-           <div class="flame">🔥</div>
-          </div>
-          <div class="candle-body" id="candle-3">
-           <div class="wax-drip"></div>
-           <div class="wax-drip"></div>
-          </div>
-         </div>
-         <div class="candle-wrapper" onclick="blowCandle(4)">
-          <div class="flame-container" id="flame-4">
-           <div class="flame">🔥</div>
-          </div>
-          <div class="candle-body" id="candle-4">
            <div class="wax-drip"></div>
            <div class="wax-drip"></div>
           </div>
@@ -1009,7 +1001,7 @@
    <script>
         // Candles functionality
         let blownCandles = 0;
-        const totalCandles = 5;
+        const totalCandles = 3;
 
         function blowCandle(index) {
             const flame = document.getElementById(`flame-${index}`);
