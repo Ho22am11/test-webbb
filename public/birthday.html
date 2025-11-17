@@ -224,13 +224,41 @@
         /* Main content - initially hidden */
         .main-content {
             opacity: 0;
-            transition: opacity 1s ease-in;
+            transition: opacity 1s ease-in, background 1s ease-in;
             background: linear-gradient(135deg, #ff6b9d, #ffc3e1, #ff9a9e, #fad0c4);
             min-height: 100%;
         }
 
         .main-content.show {
             opacity: 1;
+        }
+
+        /* Dark mode for candles scene */
+        .main-content.dark-mode {
+            background: #000000 !important;
+        }
+
+        .main-content.dark-mode .main-title,
+        .main-content.dark-mode .love-message,
+        .main-content.dark-mode .birthday-wish,
+        .main-content.dark-mode .heart-button {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .main-content.dark-mode .love-card {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        /* Spotlight effect for cake and candles */
+        .main-content.dark-mode .cake-container {
+            filter: drop-shadow(0 0 50px rgba(255, 200, 0, 0.6));
+        }
+
+        .main-content.dark-mode .candles-title {
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
         }
 
         .container {
@@ -1037,6 +1065,14 @@
                 instruction.textContent = '🎉 رائع! كل الشموع انطفت! أتمنى لك عيد ميلاد سعيد 💖';
                 instruction.style.color = '#27ae60';
                 
+                // Remove dark mode and reveal the page
+                const mainContent = document.getElementById('mainContent');
+                setTimeout(() => {
+                    mainContent.classList.remove('dark-mode');
+                    document.body.style.background = 'linear-gradient(135deg, #ff6b9d, #ffc3e1, #ff9a9e, #fad0c4)';
+                    startMainAnimations();
+                }, 500);
+                
                 // Create celebration effect
                 for (let i = 0; i < 20; i++) {
                     setTimeout(() => {
@@ -1092,8 +1128,8 @@
             setTimeout(() => {
                 storyPage.style.display = 'none';
                 mainContent.classList.add('show');
-                document.body.style.background = 'linear-gradient(135deg, #ff6b9d, #ffc3e1, #ff9a9e, #fad0c4)';
-                startMainAnimations();
+                mainContent.classList.add('dark-mode'); // Start in dark mode
+                document.body.style.background = '#000000'; // Dark background initially
             }, 1000);
         }
 
