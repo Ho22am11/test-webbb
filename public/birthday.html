@@ -49,20 +49,21 @@
 
         .intro-title {
             font-size: 4rem;
-            color: #666666;
+            color: #ffffff;
             text-align: center;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.3);
             animation: introGlow 2s ease-in-out infinite alternate;
         }
 
         .intro-subtitle {
             font-size: 1.8rem;
-            color: #555555;
+            color: #cccccc;
             text-align: center;
             margin-bottom: 3rem;
             opacity: 0;
             animation: fadeInUp 1s ease-out 1s forwards;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
         .photo-gallery {
@@ -389,8 +390,8 @@
         }
 
         @keyframes introGlow {
-            0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(102,102,102,0.2); }
-            100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(102,102,102,0.3); }
+            0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.3); }
+            100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.5); }
         }
 
         @keyframes fadeInUp {
@@ -497,10 +498,14 @@
         @media (max-width: 768px) {
             .intro-title {
                 font-size: 2rem;
+                color: #ffffff;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.3);
             }
             
             .intro-subtitle {
                 font-size: 1.1rem;
+                color: #cccccc;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
             }
             
             .photo-gallery {
@@ -536,6 +541,8 @@
             
             .story-title {
                 font-size: 2rem;
+                color: #ffffff;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.3);
             }
             
             .story-paragraph {
