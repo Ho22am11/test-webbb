@@ -13,69 +13,13 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
             height: 100%;
             background: #000000;
             font-family: 'Amiri', 'Times New Roman', serif;
             overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
-        }
-
-        /* Orientation Warning Screen */
-        .orientation-warning {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .orientation-warning.show {
-            display: flex;
-        }
-
-        .rotate-icon {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-            animation: rotatePhone 2s ease-in-out infinite;
-        }
-
-        @keyframes rotatePhone {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(90deg); }
-        }
-
-        .orientation-message {
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .orientation-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.8;
-        }
-
-        @media screen and (orientation: landscape) {
-            .orientation-warning {
-                display: none !important;
-            }
-        }
-
-        @media screen and (orientation: portrait) {
-            .orientation-warning.show {
-                display: flex;
-            }
         }
 
         /* Intro Screen Styles */
@@ -84,7 +28,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
+            min-height: 100vh;
             background: #000000;
             display: flex;
             flex-direction: column;
@@ -92,6 +37,9 @@
             justify-content: center;
             z-index: 1000;
             transition: opacity 1s ease-out;
+            overflow-y: auto;
+            padding: 1rem;
+            box-sizing: border-box;
         }
 
         .intro-screen.fade-out {
@@ -180,7 +128,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
+            min-height: 100vh;
             background: url('/images/flower-garden.png?v=3') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -188,6 +137,9 @@
             z-index: 999;
             opacity: 0;
             transition: opacity 1s ease-in;
+            overflow-y: auto;
+            padding: 1rem;
+            box-sizing: border-box;
         }
         
         .story-page::before {
@@ -212,10 +164,12 @@
 
         .story-container {
             max-width: 800px;
+            width: 100%;
             padding: 2rem;
             text-align: center;
             position: relative;
             z-index: 2;
+            box-sizing: border-box;
         }
 
         .story-content {
@@ -300,7 +254,8 @@
             opacity: 0;
             transition: opacity 1s ease-in;
             background: url('/images/romantic-forest.png') center/cover no-repeat fixed;
-            min-height: 100%;
+            min-height: 100vh;
+            width: 100%;
         }
 
         .main-content.show {
@@ -336,7 +291,7 @@
         }
 
         .container {
-            min-height: 100%;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -344,6 +299,8 @@
             padding: 2rem;
             position: relative;
             z-index: 10;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .main-title {
@@ -539,38 +496,71 @@
 
         @media (max-width: 768px) {
             .intro-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .intro-subtitle {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
             }
             
             .photo-gallery {
                 grid-template-columns: repeat(2, 1fr);
-                max-width: 400px;
+                max-width: 100%;
+                gap: 0.8rem;
             }
             
             .photo-item {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
             }
             
             .main-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                padding: 0 1rem;
             }
             
             .love-card {
-                padding: 2rem;
-                margin: 1rem;
+                padding: 1.5rem;
+                margin: 1rem 0.5rem;
+                max-width: 100%;
             }
             
             .love-message {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
             .birthday-wish {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .story-title {
+                font-size: 2rem;
+            }
+            
+            .story-paragraph {
+                font-size: 1.1rem;
+            }
+            
+            .story-content {
+                padding: 1.5rem;
+                margin: 1rem 0.5rem;
+            }
+            
+            .container {
+                padding: 1rem 0.5rem;
+            }
+            
+            .story-container {
+                padding: 1rem;
+            }
+            
+            .intro-screen {
+                padding: 1rem 0.5rem;
+            }
+            
+            .story-page {
+                padding: 1rem 0.5rem;
             }
         }
 
@@ -713,21 +703,26 @@
 
         @media (max-width: 768px) {
             .candles-container {
-                gap: 2rem;
-                top: -60px;
+                gap: 1.5rem;
+                top: -50px;
             }
 
             .candle-body {
-                width: 25px;
-                height: 60px;
+                width: 22px;
+                height: 55px;
             }
 
             .flame {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             
             .flame-container {
-                height: 20px;
+                height: 18px;
+            }
+            
+            .candles-title {
+                font-size: 1.2rem;
+                padding: 0 1rem;
             }
         }
 
@@ -920,37 +915,31 @@
 
         @media (max-width: 768px) {
             .cake {
-                width: 280px;
+                width: 250px;
             }
 
             .layer-1 {
-                width: 280px;
+                width: 250px;
             }
 
             .layer-2 {
-                width: 260px;
+                width: 230px;
             }
 
             .layer-3 {
-                width: 280px;
+                width: 250px;
             }
 
             .cake-plate {
-                width: 300px;
+                width: 270px;
             }
 
-            .candles-container {
-                gap: 0.8rem;
-                margin-bottom: 1rem;
+            .cake-with-candles {
+                margin-top: 60px;
             }
-
-            .candle-body {
-                width: 35px;
-                height: 90px;
-            }
-
-            .flame {
-                font-size: 1.8rem;
+            
+            .cake-container {
+                margin: 1rem 0;
             }
         }
     </style>
@@ -959,18 +948,7 @@
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
-  <!-- Orientation Warning Screen -->
-  <div class="orientation-warning show" id="orientationWarning">
-   <div class="rotate-icon">📱 ↻</div>
-   <h2 class="orientation-message">من فضلك استخدم الموبايل بالعرض</h2>
-   <p class="orientation-subtitle">
-    🔒 قفل دوران الشاشة أولاً<br>
-    🔄 ثم قلب الموبايل للوضع الأفقي<br>
-    ✨ لتجربة أفضل وأجمل
-   </p>
-  </div>
-  
-   <!-- Intro Screen -->
+  <!-- Intro Screen -->
    <div class="intro-screen" id="introScreen" onclick="showStoryPage()" style="cursor: pointer;">
    <h1 class="intro-title" id="introTitle">The World Before 2000/11/22</h1>
    <p class="intro-subtitle" id="introSubtitle">It was a dark and sad place... without you</p>
@@ -1094,31 +1072,6 @@
    </div>
   </div>
    <script>
-        // Orientation Detection
-        function checkOrientation() {
-            const orientationWarning = document.getElementById('orientationWarning');
-            const introScreen = document.getElementById('introScreen');
-            
-            if (window.innerWidth < window.innerHeight) {
-                // Portrait mode - show warning
-                orientationWarning.classList.add('show');
-                if (introScreen) {
-                    introScreen.style.display = 'none';
-                }
-            } else {
-                // Landscape mode - hide warning and show intro
-                orientationWarning.classList.remove('show');
-                if (introScreen && !introScreen.classList.contains('fade-out')) {
-                    introScreen.style.display = 'flex';
-                }
-            }
-        }
-
-        // Check on load and on resize/rotation
-        window.addEventListener('load', checkOrientation);
-        window.addEventListener('resize', checkOrientation);
-        window.addEventListener('orientationchange', checkOrientation);
-
         // Candles functionality
         let blownCandles = 0;
         const totalCandles = 3;
